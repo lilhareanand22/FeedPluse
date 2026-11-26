@@ -2,6 +2,7 @@ package android.ai.feedpluse.core.di
 
 import android.ai.feedpluse.BuildConfig
 import android.ai.feedpluse.feature.articles.data.model.ArticleApi
+import android.ai.feedpluse.feature.sources.data.model.SourceApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -59,5 +60,11 @@ object NetworkModule {
     @Singleton
     fun provideArticleApi(retrofit: Retrofit): ArticleApi {
         return retrofit.create(ArticleApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSourceApi(retrofit: Retrofit): SourceApi {
+        return retrofit.create(SourceApi::class.java)
     }
 }
