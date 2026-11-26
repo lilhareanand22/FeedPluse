@@ -1,6 +1,7 @@
 package android.ai.feedpluse.core.di
 
 import android.ai.feedpluse.BuildConfig
+import android.ai.feedpluse.feature.articles.data.model.ArticleApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -52,5 +53,11 @@ object NetworkModule {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideArticleApi(retrofit: Retrofit): ArticleApi {
+        return retrofit.create(ArticleApi::class.java)
     }
 }
